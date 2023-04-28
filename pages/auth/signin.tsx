@@ -3,7 +3,7 @@ import { Button, Flex, Heading, Image } from "@chakra-ui/react"
 import React from "react"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { schemaLogin } from "utils/validationSchema"
+import { schemaSignin } from "utils/validationSchema"
 import { useRouter } from "next/router"
 
 export default function Signin() {
@@ -13,7 +13,7 @@ export default function Signin() {
         handleSubmit,
         formState: { errors },
     } = useForm({
-        resolver: yupResolver(schemaLogin),
+        resolver: yupResolver(schemaSignin),
     })
 
     function handleLogin(data: any) {
@@ -68,8 +68,8 @@ export default function Signin() {
                     />
                     <TextFormInput
                         control={control}
-                        validate={errors.password}
-                        errors={errors.password?.message}
+                        validate={errors.confirmPassword}
+                        errors={errors.confirmPassword?.message}
                         name="confirmPassword"
                         label="Confirmar senha"
                         type="password"
@@ -79,7 +79,11 @@ export default function Signin() {
                         type="submit"
                         w={"100%"}
                         colorScheme="blackAlpha"
-                        isDisabled={errors.password || errors.email ? true : false}
+                        isDisabled={
+                            errors.password || errors.email || errors.confirmPassword
+                                ? true
+                                : false
+                        }
                     >
                         CRIAR CONTA
                     </Button>
