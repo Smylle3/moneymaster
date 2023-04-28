@@ -1,5 +1,5 @@
 import TextFormInput from "@/components/FormInputs/TextFormInput"
-import { Button, Flex, Heading, Image } from "@chakra-ui/react"
+import { Button, Flex } from "@chakra-ui/react"
 import React from "react"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -17,7 +17,7 @@ export default function Signin() {
         resolver: yupResolver(schemaSignin),
     })
 
-    function handleLogin(data: any) {
+    function handleSignin(data: any) {
         console.log("data", data)
     }
 
@@ -28,7 +28,7 @@ export default function Signin() {
     return (
         <AuthPagesComponents title="CADASTRAR">
             <form
-                onSubmit={handleSubmit(handleLogin)}
+                onSubmit={handleSubmit(handleSignin)}
                 style={{
                     display: "flex",
                     flexDirection: "column",
@@ -43,6 +43,7 @@ export default function Signin() {
                     name="email"
                     label="Email"
                     placeHolder="Digite seu email..."
+                    isRequired
                 />
                 <TextFormInput
                     control={control}
@@ -52,6 +53,7 @@ export default function Signin() {
                     label="Senha"
                     type="password"
                     placeHolder="Crie uma nova senha..."
+                    isRequired
                 />
                 <TextFormInput
                     control={control}
@@ -61,6 +63,7 @@ export default function Signin() {
                     label="Confirmar senha"
                     type="password"
                     placeHolder="Digite novamente a senha..."
+                    isRequired
                 />
                 <Button
                     type="submit"

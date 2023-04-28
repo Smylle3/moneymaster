@@ -1,4 +1,4 @@
-import { Flex, HStack, Heading, Image, Stack, Text, VStack } from "@chakra-ui/react"
+import { Flex, Heading, Image, Text, VStack } from "@chakra-ui/react"
 import React from "react"
 
 type AuthPagesComponentsProps = {

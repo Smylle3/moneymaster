@@ -29,6 +29,7 @@ type textFormInputProps = {
     autoFocus?: boolean
     validate?: any
     errors?: any
+    isRequired?: boolean
 }
 
 export default function TextFormInput({
@@ -40,6 +41,7 @@ export default function TextFormInput({
     autoFocus,
     validate,
     errors,
+    isRequired,
     ...rest
 }: textFormInputProps) {
     const [show, setShow] = useState(false)
@@ -54,6 +56,7 @@ export default function TextFormInput({
                     w={"100%"}
                     color={errors ? "red.600" : "primary.900"}
                     isInvalid={validate}
+                    isRequired={isRequired}
                 >
                     {label && <FormLabel>{label}</FormLabel>}
                     {type === "password" ? (

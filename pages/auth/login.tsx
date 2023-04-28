@@ -1,5 +1,5 @@
 import TextFormInput from "@/components/FormInputs/TextFormInput"
-import { Button, Flex, Heading, Image } from "@chakra-ui/react"
+import { Button, Flex } from "@chakra-ui/react"
 import React from "react"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -21,8 +21,8 @@ export default function Login() {
         console.log("data", data)
     }
 
-    const handleClick = () => {
-        router.push("/auth/signin")
+    const handleClick = (page: string) => {
+        router.push(`/auth/${page}`)
     }
 
     return (
@@ -43,6 +43,7 @@ export default function Login() {
                     name="email"
                     label="Email"
                     placeHolder="Digite seu email..."
+                    isRequired
                 />
                 <TextFormInput
                     control={control}
@@ -52,6 +53,7 @@ export default function Login() {
                     label="Senha"
                     type="password"
                     placeHolder="Digite sua senha..."
+                    isRequired
                 />
                 <Button
                     type="submit"
@@ -69,6 +71,7 @@ export default function Login() {
                     variant={"link"}
                     colorScheme="blackAlpha"
                     color={"primary.800"}
+                    onClick={() => handleClick("forgotPassword")}
                 >
                     Esqueci a senha
                 </Button>
@@ -78,7 +81,7 @@ export default function Login() {
                     variant={"outline"}
                     colorScheme="blackAlpha"
                     color={"primary.800"}
-                    onClick={handleClick}
+                    onClick={() => handleClick("signin")}
                 >
                     Cadastrar
                 </Button>
