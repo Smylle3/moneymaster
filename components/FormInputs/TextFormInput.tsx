@@ -49,7 +49,11 @@ export default function TextFormInput({
             name={name}
             control={control}
             render={({ field: { value, onChange } }) => (
-                <FormControl w={"100%"} color={errors && "red.600"} isInvalid={validate}>
+                <FormControl
+                    w={"100%"}
+                    color={errors ? "red.600" : "primary.900"}
+                    isInvalid={validate}
+                >
                     {label && <FormLabel>{label}</FormLabel>}
                     {type === "password" ? (
                         <InputGroup>
@@ -69,7 +73,7 @@ export default function TextFormInput({
                             <InputRightElement>
                                 <IconButton
                                     aria-label="Show Hidden Passowrd"
-                                    color={errors && "red.600"}
+                                    color={errors ? "red.600" : "primary.900"}
                                     icon={
                                         show ? <BsFillEyeFill /> : <BsFillEyeSlashFill />
                                     }

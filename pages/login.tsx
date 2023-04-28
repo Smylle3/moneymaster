@@ -19,7 +19,7 @@ export default function Login() {
     }
 
     return (
-        <Flex bg={"primary.100"} minH={"100vh"} align={"center"} justify={"center"}>
+        <Flex bg={"primary.200"} minH={"100vh"} align={"center"} justify={"center"}>
             <Flex
                 bg={"primary.500"}
                 align={"center"}
@@ -77,6 +77,7 @@ export default function Login() {
                         w={"fit-content"}
                         variant={"link"}
                         colorScheme="blackAlpha"
+                        color={"primary.800"}
                     >
                         Esqueci a senha
                     </Button>
@@ -85,6 +86,7 @@ export default function Login() {
                         w={"fit-content"}
                         variant={"outline"}
                         colorScheme="blackAlpha"
+                        color={"primary.800"}
                     >
                         Cadastrar
                     </Button>
