@@ -40,6 +40,7 @@ export default function TextFormInput({
     autoFocus,
     validate,
     errors,
+    ...rest
 }: textFormInputProps) {
     const [show, setShow] = useState(false)
     const handleClick = () => setShow(!show)
@@ -56,8 +57,8 @@ export default function TextFormInput({
                 >
                     {label && <FormLabel>{label}</FormLabel>}
                     {type === "password" ? (
-                        <InputGroup>
-                            <Tooltip hasArrow label={errors}>
+                        <Tooltip hasArrow label={errors}>
+                            <InputGroup>
                                 <ComplexInput
                                     control={control}
                                     name={name}
@@ -68,21 +69,26 @@ export default function TextFormInput({
                                     placeHolder={placeHolder}
                                     type={show ? "text" : "password"}
                                     validate={validate}
+                                    {...rest}
                                 />
-                            </Tooltip>
-                            <InputRightElement>
-                                <IconButton
-                                    aria-label="Show Hidden Passowrd"
-                                    color={errors ? "red.600" : "primary.900"}
-                                    icon={
-                                        show ? <BsFillEyeFill /> : <BsFillEyeSlashFill />
-                                    }
-                                    variant={"ghost"}
-                                    colorScheme="blackAlpha"
-                                    onClick={handleClick}
-                                />
-                            </InputRightElement>
-                        </InputGroup>
+                                <InputRightElement>
+                                    <IconButton
+                                        aria-label="Show Hidden Passowrd"
+                                        color={errors ? "red.600" : "primary.900"}
+                                        icon={
+                                            show ? (
+                                                <BsFillEyeFill />
+                                            ) : (
+                                                <BsFillEyeSlashFill />
+                                            )
+                                        }
+                                        variant={"ghost"}
+                                        colorScheme="blackAlpha"
+                                        onClick={handleClick}
+                                    />
+                                </InputRightElement>
+                            </InputGroup>
+                        </Tooltip>
                     ) : (
                         <ComplexInput
                             control={control}
@@ -94,6 +100,7 @@ export default function TextFormInput({
                             placeHolder={placeHolder}
                             type={type}
                             validate={validate}
+                            {...rest}
                         />
                     )}
                 </FormControl>
@@ -122,6 +129,7 @@ function ComplexInput({
     errors,
     value,
     onChange,
+    ...rest
 }: ComplexInputProps) {
     return (
         <Tooltip hasArrow label={errors} bg={"red.100"} color={"red.800"}>
@@ -138,6 +146,9 @@ function ComplexInput({
                     color: errors ? "red.600" : "primary.700",
                     opacity: errors && 0.5,
                 }}
+                paddingRight={"2em"}
+                boxSizing="border-box"
+                {...rest}
             />
         </Tooltip>
     )
