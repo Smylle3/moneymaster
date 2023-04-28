@@ -4,8 +4,10 @@ import React from "react"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { schemaLogin } from "utils/validationSchema"
+import { useRouter } from "next/router"
 
 export default function Login() {
+    const router = useRouter()
     const {
         control,
         handleSubmit,
@@ -16,6 +18,10 @@ export default function Login() {
 
     function handleLogin(data: any) {
         console.log("data", data)
+    }
+
+    const handleClick = () => {
+        router.push("/auth/signin")
     }
 
     return (
@@ -29,7 +35,6 @@ export default function Login() {
                 p={"2em"}
                 borderRadius={"md"}
                 shadow={"2xl"}
-                
                 w={"fit-content"}
             >
                 {/* <Image src="/MoneyMaster_logo.svg" alt="MoneyMaster logo" /> */}
@@ -87,6 +92,7 @@ export default function Login() {
                         variant={"outline"}
                         colorScheme="blackAlpha"
                         color={"primary.800"}
+                        onClick={handleClick}
                     >
                         Cadastrar
                     </Button>
